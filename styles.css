@@ -1,0 +1,131 @@
+/* Background Effects */
+body {
+    background-image: url('background.gif'); /* Default background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: red;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    transition: background-image 1s ease-in-out, filter 0.5s ease-in-out;
+}
+
+/* Title and Text */
+h1 {
+    color: red;
+}
+
+/* Yard Floating Text */
+#yardContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.yard {
+    position: absolute;
+    top: -50px;
+    font-size: 20px;
+    color: red;
+    font-weight: bold;
+    user-select: none;
+}
+
+/* Background Change Button */
+#bgChangeButton {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: linear-gradient(45deg, #2f0e07, #c7472c);
+    color: white;
+    font-size: 18px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out, box-shadow 0.3s;
+    z-index: 1000; /* Ensures button stays on top */
+}
+
+#bgChangeButton:hover {
+    background: linear-gradient(45deg, #220a04, #220a04);
+    transform: scale(1.1);
+}
+
+#bgChangeButton:active {
+    box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+}
+
+/* Discord Button */
+#discordButton {
+    background-color: #ff2d00;
+    color: black;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#discordButton:hover {
+    background-color: #350c03;
+}
+
+/* Mute Button */
+#muteButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 16px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000; /* Keeps button fixed even when background changes */
+}
+
+#muteButton:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Floating image effect */
+.floating-image {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    animation: driftAway 5s ease-out forwards, fadeOut 2s ease-in forwards;
+    pointer-events: none;
+}
+
+/* Animation for drifting away */
+@keyframes driftAway {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--randX), var(--randY));
+        opacity: 0;
+    }
+}
+
+/* Fade out effect */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

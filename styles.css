@@ -30,20 +30,19 @@ h1 {
     pointer-events: none;
 }
 
+/* Floating Yard Text Effect */
 .yard {
     position: absolute;
     top: -50px;
-    font-size: 20px;
-    color: red;
+    font-size: 24px;
+    color: #6f0000; /* Darker red */
     font-weight: bold;
     user-select: none;
+    text-shadow: 0 0 4px #8b0000, 0 0 8px #8b0000; /* Softer dark red glow */
 }
 
-/* Background Change Button */
-#bgChangeButton {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
+/* General Button Styling */
+button {
     background: linear-gradient(45deg, #2f0e07, #c7472c);
     color: white;
     font-size: 18px;
@@ -51,61 +50,54 @@ h1 {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: 0.3s ease-in-out, box-shadow 0.3s;
-    z-index: 1000; /* Ensures button stays on top */
+    transition: 0.3s ease-in-out, box-shadow 0.3s, transform 0.2s;
+    outline: none;
+    font-weight: bold;
+    position: fixed;
+    z-index: 1000;
 }
 
-#bgChangeButton:hover {
-    background: linear-gradient(45deg, #220a04, #220a04);
+button:hover {
+    background: linear-gradient(45deg, #4e1a0f, #d94e36);
     transform: scale(1.1);
 }
 
-#bgChangeButton:active {
-    box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.8);
+button:active {
+    box-shadow: 0px 0px 15px 3px rgba(255, 255, 255, 0.8);
     transform: scale(1.2);
 }
 
-/* Discord Button */
-#discordButton {
-    background-color: #ff2d00;
-    color: black;
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#discordButton:hover {
-    background-color: #350c03;
+/* Background Change Button */
+#bgChangeButton {
+    bottom: 20px;
+    left: 20px;
 }
 
 /* Mute Button */
 #muteButton {
-    position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    font-size: 16px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 1000; /* Keeps button fixed even when background changes */
+    background: linear-gradient(45deg, #220a04, #c7472c);
 }
 
-#muteButton:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+
+/* Yard and Epic Yard Text */
+h1, p {
+    position: relative;
+    color: red;
+    text-align: center;
+    font-family: Arial, sans-serif;
 }
 
-/* Floating image effect */
+/* Floating Yard Text Effect */
 .floating-image {
     position: absolute;
-    width: 50px;
+    width: 50px; /* Set size of floating image */
     height: 50px;
-    animation: driftAway 5s ease-out forwards, fadeOut 2s ease-in forwards;
     pointer-events: none;
+    animation: driftAway 7s ease-in-out forwards, fadeOut 4s ease-in forwards; /* Smooth fading */
+    user-select: none;
+    text-shadow: 0 0 4px #8b0000, 0 0 8px #8b0000; /* Softer dark red glow */
 }
 
 /* Animation for drifting away */
@@ -114,9 +106,21 @@ h1 {
         transform: translate(0, 0);
         opacity: 1;
     }
+    25% {
+        transform: translate(calc(var(--randX) * 0.3), calc(var(--randY) * 0.3)); /* Slight left and right drift */
+        opacity: 1;
+    }
+    50% {
+        transform: translate(calc(var(--randX) * 0.5), calc(var(--randY) * 0.5)); /* Slightly more drift */
+        opacity: 0.9;
+    }
+    75% {
+        transform: translate(calc(var(--randX) * 0.8), calc(var(--randY) * 0.8)); /* Continue drifting */
+        opacity: 0.7;
+    }
     100% {
-        transform: translate(var(--randX), var(--randY));
         opacity: 0;
+        transform: translate(var(--randX), var(--randY)); /* Finish off with random drift */
     }
 }
 
@@ -128,4 +132,34 @@ h1 {
     100% {
         opacity: 0;
     }
+}
+
+/* Center the buttons and prevent movement */
+#buttonContainer {
+    position: absolute;
+    top: 20%; /* Move the buttons higher */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust to center the buttons properly */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Increase gap between buttons */
+}
+
+/* Discord Button - Now Centered */
+#discordButton {
+    background: linear-gradient(45deg, #ff2d00, #8a1204);
+    width: 180px; /* Adjust size */
+    padding: 12px 20px;
+    font-size: 16px;
+    top: -30px; /* Make Discord button higher */
+}
+
+/* Info Button - Smaller and below Discord button */
+#infoButton {
+    background: linear-gradient(45deg, #7d1b0a, #e04d34);
+    width: 140px; /* Slightly smaller */
+    padding: 6px 12px; /* Smaller padding */
+    font-size: 14px;
+    margin-top: 20px; /* Push it lower */
 }

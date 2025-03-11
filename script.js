@@ -54,11 +54,11 @@ muteButton.addEventListener("click", function() {
 // Floating PNG Image Effect on Click
 document.body.addEventListener("click", function(event) {
     const image = document.createElement("img");
-    image.src = "assets/my-image.png";
+    image.src = "assets/my-image.png"; // Your image path
     image.classList.add("floating-image");
 
-    const randX = Math.random() * 500 - 250;
-    const randY = Math.random() * 500 - 250;
+    const randX = Math.random() * 500 - 250; // Adjust random horizontal distance
+    const randY = Math.random() * 500 - 250; // Adjust random vertical distance
 
     image.style.setProperty('--randX', `${randX}px`);
     image.style.setProperty('--randY', `${randY}px`);
@@ -67,8 +67,10 @@ document.body.addEventListener("click", function(event) {
     const clickX = event.clientX + rect.left;
     const clickY = event.clientY + rect.top;
 
-    image.style.left = `${clickX - 25}px`;
+    image.style.left = `${clickX - 25}px`; // Center image around click position
     image.style.top = `${clickY - 25}px`;
+
+    image.style.width = '50px'; // Fix the size of the image to be consistent
 
     document.body.appendChild(image);
 
@@ -78,7 +80,7 @@ document.body.addEventListener("click", function(event) {
 });
 
 // Typewriter Effect
-const texts = ["Yard.", "epic yard"];
+const texts = ["Yard.", "WIP"];
 let charIndex1 = 0;
 let charIndex2 = 0;
 let isDeleting = false;
@@ -122,9 +124,6 @@ window.onload = function() {
     typeText();
 };
 
-
-
-
 // Background images array
 const bgImages = ["background.gif", "background1.png"];
 let currentIndex = 0;
@@ -136,5 +135,3 @@ document.getElementById("bgChangeButton").addEventListener("click", function() {
     // Change background while keeping elements in place
     document.body.style.backgroundImage = `url('${bgImages[currentIndex]}')`;
 });
-
-
